@@ -18,7 +18,7 @@ jobs:
       #  uses: dawidd6/action-get-tag@v1
 
       - name: Build & Upload Pack
-        uses: Sindercube/Packr@master
+        uses: Sindercube/Packr@main
         with:
 
           filename: pack.zip
