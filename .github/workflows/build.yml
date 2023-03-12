@@ -34,7 +34,7 @@ jobs:
               -d build/ \
               -of true \
           \
-              -rn ${{ github.event.release.name }} \
+              -rn ${{ github.event.release.name || 'New Release' }} \
               -rv ${{ github.event.release.tag_name }} \
               -mv 1.18.2 \
           \
