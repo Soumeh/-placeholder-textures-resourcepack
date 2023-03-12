@@ -27,8 +27,6 @@ jobs:
         shell: bash
         run: |
 
-          curl "https://api.modrinth.com/v2/project/WXrOGDBd/version" -H "Authorization: ${{ secrets.MODRINTH_TOKEN }}"
-
           python -m packr \
           \
               -f pack.zip \
