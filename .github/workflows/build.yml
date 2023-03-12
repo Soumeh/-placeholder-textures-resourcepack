@@ -22,9 +22,9 @@ jobs:
           minecraft-versions: |
             1.18.2
 
-          github-repo: 'Soumeh/Resource-Packager-Testing'
           modrinth-id: 'WXrOGDBd'
           curseforge-id: '830844'
+          github-repo: ${{ github.event.repository.name }}
 
           release-name: ${{ github.event.release.name }}
           release-version: ${{ github.event.release.tag_name }}
