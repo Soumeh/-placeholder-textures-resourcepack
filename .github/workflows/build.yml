@@ -23,7 +23,7 @@ jobs:
             1.18.2
 
           modrinth-id: 'WXrOGDBd'
-          curseforge-id: '830844'
+          curseforge-id: '836811'
           github-repo: ${{ github.event.repository.name }}
 
           release-name: ${{ github.event.release.name }}
