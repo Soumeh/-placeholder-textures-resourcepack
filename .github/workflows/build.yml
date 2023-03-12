@@ -45,9 +45,9 @@ jobs:
               -mi WXrOGDBd \
               -ci 830844 \
           \
-              -mt ${{ secrets.GITHUB_TOKEN }} \
-              -gt ${{ secrets.MODRINTH_TOKEN }} \
-              -ct ${{ secrets.CURSEFORGE_TOKEN }}
+              -mt "${{ secrets.GITHUB_TOKEN }}" \
+              -gt "${{ secrets.MODRINTH_TOKEN }}" \
+              -ct "${{ secrets.CURSEFORGE_TOKEN }}"
 
       #- name: Checkout Repo
       #  uses: actions/checkout@v2
