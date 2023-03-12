@@ -33,6 +33,6 @@ jobs:
           release-version: ${{ github.event.release.tag_name }} #${{ steps.tag.outputs.tag }}
           changelog: ${{ github.event.release.body }}
 
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACCESS_TOKEN }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }} # https://modrinth.com/settings/account
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }} # https://www.curseforge.com/account/api-tokens
