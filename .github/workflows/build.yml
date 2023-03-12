@@ -30,8 +30,7 @@ jobs:
           python -m packr \
           \
               -f pack.zip \
-              -p "test_pack/*"
-          \
+              -p "test_pack/*" \
               -d build/ \
               -of true \
           \
