@@ -10,65 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Build & Upload Pack
+        uses: Sindercube/Packr@main
         with:
-          token: '${{ github.token }}'
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+          filename: pack.zip
+          parts: |
+            test_pack/*
+          output-directory: build/ 
+          optimize-files: true
+          minecraft-versions: |
+            1.18.2
 
-      - name: Install Packr
-        shell: bash
-        run: pip install git+https://github.com/sindercube/packr
+          github-repo: 'Soumeh/Resource-Packager-Testing'
+          modrinth-id: 'WXrOGDBd'
+          curseforge-id: '830844'
 
-      - name: Run Packr
-        shell: bash
-        run: |
+          release-name: ${{ github.event.release.name }}
+          release-version: ${{ github.event.release.tag_name }}
+          changelog: ${{ github.event.release.body }}
 
-          python -m packr \
-          \
-              -f pack.zip \
-              -p "test_pack/*" \
-              -d build/ \
-              -of true \
-          \
-              -rn "${{ github.event.release.name || 'New Release' }}" \
-              -rv "${{ github.event.release.tag_name }}" \
-              -mv 1.18.2 \
-          \
-              -gr Soumeh/Resource-Packager-Testing \
-              -mi WXrOGDBd \
-              -ci 830844 \
-          \
-              --github-token ${{ secrets.GITHUB_TOKEN }} \
-              --modrinth-token ${{ secrets.MODRINTH_TOKEN }} \
-              --curseforge-token ${{ secrets.CURSEFORGE_TOKEN }}
-
-      #- name: Checkout Repo
-      #  uses: actions/checkout@v2
-
-      #- name: Build & Upload Pack
-      #  uses: Sindercube/Packr@main
-      #  with:
-
-      #    filename: pack.zip
-      #    parts: |
-      #      test_pack/*
-      #    output-directory: build/ 
-      #    optimize-files: true
-      #    minecraft-versions: |
-      #      1.18.2
-
-      #    github-repo: 'Soumeh/Resource-Packager-Testing'
-      #    modrinth-id: 'WXrOGDBd'
-      #    curseforge-id: '830844'
-
-      #    release-name: ${{ github.event.release.name }}
-      #    release-version: ${{ github.event.release.tag_name }} #${{ steps.tag.outputs.tag }}
-      #    changelog: ${{ github.event.release.body }}
-
-      #    github-token: ${{ secrets.ACCESS_TOKEN }}
-      #    modrinth-token: ${{ secrets.MODRINTH_TOKEN }} # https://modrinth.com/settings/account
-      #    curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }} # https://www.curseforge.com/account/api-tokens
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
