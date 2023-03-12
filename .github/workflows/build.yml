@@ -34,9 +34,8 @@ jobs:
               -d build/ \
               -of true \
           \
-              -rn "New Pack Release" \
-              -rv 12.0 \
-              -ch "A lot of things changed..." \
+              -rn ${{ github.event.release.name }} \
+              -rv ${{ github.event.release.tag_name }} \
               -mv 1.18.2 \
           \
               -gr Soumeh/Resource-Packager-Testing \
